@@ -34,3 +34,10 @@ exports.observableFromQueue = function (sqs, params) {
         });
     });
 };
+
+exports.subjectFromQueue = function (sqs, sendParams, receiveParams) {
+    return Rx.Subject.create(
+        exports.observerFromQueue(sqs, sendParams),
+        exports.observableFromQueue(sqs, receiveParams)
+    );
+};

@@ -1,0 +1,29 @@
+{
+  "name": "rx-sqs",
+  "version": "0.0.1",
+  "description": "Reactive Extensions for Amazon SQS",
+  "main": "index.js",
+  "dependencies": {
+    "rx": "~2.3.1",
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lebek/RxSQS.git"
+  },
+  "keywords": [
+    "amazon",
+    "sqs",
+    "rx",
+    "reactive"
+  ],
+  "author": "Peter Le Bek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lebek/RxSQS/issues"
+  }
+}

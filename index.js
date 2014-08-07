@@ -8,6 +8,14 @@ function receiveMessage(sqs, params, callback) {
     });
 }
 
+exports.observerFromTopic = function (sns, params) {
+    return Rx.Observer.create(function (messageParams) {
+        sns.publish(_.defaults(messageParams, params), function (err, data) {
+
+        });
+    });
+};
+
 exports.observerFromQueue = function (sqs, params) {
     return Rx.Observer.create(function (messageParams) {
         sqs.sendMessage(_.defaults(messageParams, params), function (err, data) {

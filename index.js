@@ -1,16 +1,24 @@
 var Rx = require('rx'),
     _ = require('lodash');
 
-function readMessage(sqs, params, callback) {
+function receiveMessage(sqs, params, callback) {
     sqs.receiveMessage(params, function (err, data) {
         callback(err, data);
-        readMessage(sqs, params, callback);
+        receiveMessage(sqs, params, callback);
     });
 }
 
+exports.observerFromQueue = function (sqs, params) {
+    return Rx.Observer.create(function (messageParams) {
+        sqs.sendMessage(_.defaults(messageParams, params), function (err, data) {
+
+        });
+    });
+};
+
 exports.observableFromQueue = function (sqs, params) {
     return Rx.Observable.create(function (observer) {
-        readMessage(sqs, params, function (err, data) {
+        receiveMessage(sqs, params, function (err, data) {
 
             if (err) {
                 observer.onError(err);
